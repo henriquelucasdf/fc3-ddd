@@ -22,10 +22,9 @@
             "settings": {
                 "python.linting.enabled": true,
                 "python.linting.mypyEnabled": true,
-                "python.defaultInterpreterPath": "/usr/local/bin/python",
+                "python.linting.pycodestyleEnabled": true,
                 "python.formatting.provider": "autopep8",
-                "python.formatting.autopep8Path": "/usr/local/bin/autopep8",
-                "python.linting.mypyPath": "/usr/local/bin/mypy"
+                "python.defaultInterpreterPath": "/usr/local/bin/python"
             },
             // Add the IDs of extensions you want installed when the container is created.
             "extensions": [
