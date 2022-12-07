@@ -1,4 +1,5 @@
 from typing import Optional
+from address import Address
 
 
 class Customer:
@@ -6,7 +7,7 @@ class Customer:
         self,
         _id: str,
         _name: str,
-        _address: str = "",
+        _address: Optional[Address] = None,
         _active: Optional[bool] = False
     ) -> None:
         self._id = _id
@@ -28,10 +29,13 @@ class Customer:
         self.validate()
 
     def activate(self) -> None:
-        if not len(self._address):
+        if self._address is None:
             raise ValueError("Address is mandatory to activate a customer")
 
         self._active = True
 
     def deactivate(self) -> None:
         self._active = False
+
+    def set_address(self, address: Address) -> None:
+        self._address = address
