@@ -39,3 +39,9 @@ class Customer:
 
     def set_address(self, address: Address) -> None:
         self._address = address
+
+    def get_name(self) -> str:
+        return self._name
+
+    def is_active(self) -> bool:
+        return self._active

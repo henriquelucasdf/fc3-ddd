@@ -13,3 +13,6 @@ class Order:
         self._id = _id
         self._customerId = _customerId
         self._items = _items
+
+    def total(self) -> float:
+        return sum([item._price for item in self._items])
