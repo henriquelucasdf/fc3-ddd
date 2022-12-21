@@ -1,5 +1,5 @@
 import pytest
-from entity.product import Product
+from src.entity.product import Product
 
 
 def test_product_should_throw_error_when_id_is_empty():
