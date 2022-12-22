@@ -29,3 +29,6 @@ class Order:
 
         if not len(self._items):
             raise ValueError("items quantity must be greater than zero")
+
+    def get_total(self) -> float:
+        return self._total
