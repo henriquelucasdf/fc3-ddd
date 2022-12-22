@@ -65,3 +65,16 @@ def test_activate_should_throw_error_without_address():
         customer.activate()
 
     assert str(error_info.value) == "Address is mandatory to activate a customer"
+
+
+def test_reward_points_should_be_zero_when_initialized():
+    customer = Customer("123", "John")
+    assert customer.get_reward_points() == 0
+
+
+def test_should_add_reward_points():
+    customer = Customer("123", "John")
+    customer.add_reward_points(12)
+    customer.add_reward_points(13)
+
+    assert customer.get_reward_points() == 25

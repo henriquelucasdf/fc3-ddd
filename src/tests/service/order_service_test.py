@@ -1,5 +1,5 @@
-import pytest
 from src.entity.order import Order
+from src.entity.customer import Customer
 from src.entity.order_item import OrderItem
 from src.service.order_service import OrderService
 
@@ -13,3 +13,13 @@ def test_should_get_total_of_all_orders():
 
     total = OrderService.total_price([order1, order2])
     assert total == 500
+
+
+def test_should_place_an_order():
+    customer = Customer("c1", "name1", "add1", True)
+    item1 = OrderItem("it1", "item1", 10, "p1", 1)
+
+    order = OrderService.place_order(customer, [item1])
+
+    assert customer.get_reward_points() == 5
+    assert order.get_total() == 10

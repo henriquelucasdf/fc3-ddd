@@ -14,6 +14,7 @@ class Customer:
         self._name = _name
         self._address = _address
         self._active = _active
+        self._rewardPoints = 0.0
 
         self.validate()
 
@@ -43,5 +44,14 @@ class Customer:
     def get_name(self) -> str:
         return self._name
 
-    def is_active(self) -> bool:
+    def get_id(self) -> str:
+        return self._id
+
+    def is_active(self) -> Optional[bool]:
         return self._active
+
+    def add_reward_points(self, points: float) -> None:
+        self._rewardPoints += points
+
+    def get_reward_points(self) -> float:
+        return self._rewardPoints
