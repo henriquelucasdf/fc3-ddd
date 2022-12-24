@@ -1,6 +1,6 @@
 import pytest
-from src.entity.address import Address
-from src.entity.customer import Customer
+from src.domain.entity.address import Address
+from src.domain.entity.customer import Customer
 
 
 def test_show_throw_error_when_id_is_empty():

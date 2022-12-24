@@ -3,3 +3,4 @@ pydantic==1.10.2
 mypy
 autopep8
 pytest-cov==4.0.0
+SQLAlchemy==1.4

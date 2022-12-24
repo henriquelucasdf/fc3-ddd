@@ -1,8 +1,8 @@
-from entity.order import Order
-from entity.address import Address
-from entity.customer import Customer
-from entity.order_item import OrderItem
-from service.product_service import ProductService
+from src.domain.entity.order import Order
+from src.domain.entity.address import Address
+from src.domain.entity.customer import Customer
+from src.domain.entity.order_item import OrderItem
+from src.domain.service.product_service import ProductService
 
 # Customer Aggregate
 customer = Customer("123", "Joao Maria")
