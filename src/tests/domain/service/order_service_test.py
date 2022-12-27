@@ -1,3 +1,4 @@
+import pytest
 from src.domain.entity.order import Order
 from src.domain.entity.customer import Customer
 from src.domain.entity.order_item import OrderItem
@@ -23,3 +24,9 @@ def test_should_place_an_order():
 
     assert customer.get_reward_points() == 5
     assert order.get_total() == 10
+
+
+def test_should_raise_an_error():
+    customer = Customer("c1", "name1", "add1", True)
+    with pytest.raises(ValueError):
+        OrderService.place_order(customer, [])
