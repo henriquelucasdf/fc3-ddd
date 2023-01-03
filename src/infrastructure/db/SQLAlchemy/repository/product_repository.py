@@ -32,7 +32,16 @@ class ProductRepository(ProductRepositoryInterface):
         self.session.commit()
 
     def find(self, id: str) -> Product:
-        return self.session.query(ProductModel).filter_by(id=id).first()
+        product_model = self.session.query(
+            ProductModel).filter_by(id=id).first()
+
+        return Product(
+            id=product_model.id,
+            name=product_model.name,
+            price=product_model.price
+        )
 
     def find_all(self) -> List[Product]:
-        return self.session.query(ProductModel).all()
+        models_list = self.session.query(ProductModel).all()
+
+        return [Product(model.id, model.name, model.price) for model in models_list]

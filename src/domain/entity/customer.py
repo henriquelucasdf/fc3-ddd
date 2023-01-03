@@ -5,15 +5,15 @@ from src.domain.entity.address import Address
 class Customer:
     def __init__(
         self,
-        _id: str,
-        _name: str,
-        _address: Optional[Address] = None,
-        _active: Optional[bool] = False
+        id: str,
+        name: str,
+        address: Optional[Address] = None,
+        active: Optional[bool] = False
     ) -> None:
-        self._id = _id
-        self._name = _name
-        self._address = _address
-        self._active = _active
+        self._id = id
+        self._name = name
+        self._address = address
+        self._active = active
         self._rewardPoints = 0.0
 
         self.validate()

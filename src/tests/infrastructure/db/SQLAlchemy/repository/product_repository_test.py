@@ -78,13 +78,13 @@ class TestProduct:
         product_repository.create(product)
 
         found_product = product_repository.find(id="3")
-        assert found_product.name == "product_3"
-        assert found_product.price == 300
+        assert found_product.get_name() == "product_3"
+        assert found_product.get_price() == 300
 
     def test_should_find_all_products(self):
         product_repository = ProductRepository(self.session)
 
         products_list = product_repository.find_all()
-        ids_list = [prod.id for prod in products_list]
+        ids_list = [prod._id for prod in products_list]
 
         assert not len(set(["1", "3", "789"]) - set(ids_list))
