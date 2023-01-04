@@ -9,5 +9,3 @@ class ProductModel(BaseModel):
     id = Column(String(50), primary_key=True)
     name = Column(String(250), nullable=False)
     price = Column(Float, nullable=False)
-
-    order_items = relationship("OrderItemModel", back_populates="products")

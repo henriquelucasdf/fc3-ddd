@@ -1,6 +1,7 @@
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, String, Float, Boolean, Integer
 from src.infrastructure.db.SQLAlchemy.model.base_model import BaseModel
+from src.infrastructure.db.SQLAlchemy.model.order_model import OrderModel
 
 
 class CustomerModel(BaseModel):
@@ -20,4 +21,4 @@ class CustomerModel(BaseModel):
     # We need to model the DB based in the domain, not the inverse
 
     # relationships
-    orders = relationship("OrderModedel", back_populates="customer")
+    orders = relationship("OrderModel", backref="customer")
