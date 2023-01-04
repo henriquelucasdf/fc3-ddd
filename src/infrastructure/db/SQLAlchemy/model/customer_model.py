@@ -1,7 +1,6 @@
-from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import relationship
 from sqlalchemy import Column, String, Float, Boolean, Integer
-
-BaseModel = declarative_base()
+from src.infrastructure.db.SQLAlchemy.model.base_model import BaseModel
 
 
 class CustomerModel(BaseModel):
@@ -19,3 +18,6 @@ class CustomerModel(BaseModel):
     # Address is a value object in the domain
     # But in the DB, it's just a column
     # We need to model the DB based in the domain, not the inverse
+
+    # relationships
+    orders = relationship("OrderModedel", back_populates="customer")
