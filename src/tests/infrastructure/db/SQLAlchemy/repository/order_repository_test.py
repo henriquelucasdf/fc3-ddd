@@ -1,150 +1,87 @@
-# import pytest
-# from sqlalchemy import create_engine
-# from sqlalchemy.orm import sessionmaker
-# from src.domain.entity.address import Address
-# from src.domain.entity.customer import Customer
-# from src.infrastructure.db.SQLAlchemy.model.base_model import BaseModel
-# from src.infrastructure.db.SQLAlchemy.model.order_model import OrderModel
-# from src.infrastructure.db.SQLAlchemy.repository.customer_repository import CustomerRepository
+import pytest
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from src.domain.entity.order import Order
+from src.domain.entity.address import Address
+from src.domain.entity.product import Product
+from src.domain.entity.customer import Customer
+from src.domain.entity.order_item import OrderItem
+from src.infrastructure.db.SQLAlchemy.model.base_model import BaseModel
+from src.infrastructure.db.SQLAlchemy.model.order_model import OrderModel
+from src.infrastructure.db.SQLAlchemy.repository.order_repository import OrderRepository
+from src.infrastructure.db.SQLAlchemy.repository.product_repository import ProductRepository
+from src.infrastructure.db.SQLAlchemy.repository.customer_repository import CustomerRepository
 
 
-# engine = create_engine('sqlite://')
-# Session = sessionmaker(bind=engine)
+engine = create_engine('sqlite://')
+Session = sessionmaker(bind=engine)
 
 
-# class TestOrder:
-#     def setup_class(self):
-#         BaseModel.metadata.create_all(engine)
+class TestOrder:
+    def setup_class(self):
+        BaseModel.metadata.create_all(engine)
+        self.session = Session()
 
-#         self.session = Session()
-#         self.valid_customer = CustomerModel(
-#             id="C0",
-#             name="valid customer",
-#             active=True,
-#             street="1234 Street",
-#             number=4,
-#             zip="1233456",
-#             city="Test city",
-#             reward_points=0.0
-#         )
+    def teardown_class(self):
+        self.session.rollback()
+        self.session.close()
 
-#     def teardown_class(self):
-#         self.session.rollback()
-#         self.session.close()
+    def test_should_create_a_new_order(self):
+        # create a customer
+        address = Address(
+            street="street 1",
+            number=1,
+            zip="1111111",
+            city="City 1"
+        )
+        customer = Customer(
+            id="C1",
+            name="Customer test 1",
+            address=address,
+            active=True
+        )
 
-#     def test_customer_valid(self):
-#         self.session.add(self.valid_customer)
-#         self.session.commit()
+        customer_repository = CustomerRepository(self.session)
+        customer_repository.create(customer)
 
-#         query_customer = self.session.query(
-#             CustomerModel).filter_by(id="C0").first()
+        # create a product
+        product = Product("P1", "Product 1", 10)
+        product_repository = ProductRepository(self.session)
+        product_repository.create(product)
 
-#         assert query_customer.name == "valid customer"
-#         assert query_customer.street == "1234 Street"
-#         assert query_customer.number == 4
-#         assert query_customer.zip == "1233456"
+        # Creating an Order
+        # create a item
+        order_item1 = OrderItem(
+            "OI1",
+            product.get_name(),
+            product.get_price(),
+            product._id,
+            2
+        )
 
-#     def test_should_create_customer(self):
-#         address = Address(
-#             street="street 1",
-#             number=1,
-#             zip="1111111",
-#             city="City 1"
-#         )
-#         customer = Customer(
-#             id="C1",
-#             name="Customer test 1",
-#             address=address,
-#             active=True
-#         )
+        order_item2 = OrderItem(
+            "OI2",
+            product.get_name(),
+            product.get_price(),
+            product._id,
+            4
+        )
 
-#         # creating
-#         customer_repository = CustomerRepository(self.session)
-#         customer_repository.create(customer)
+        # create an Order Entity
+        order = Order("O1", customer.get_id(), [order_item1, order_item2])
 
-#         # retrieving for assertion
-#         query_customer = self.session.query(
-#             CustomerModel).filter_by(id="C1").first()
+        # Create using the Repository
+        order_repository = OrderRepository(self.session)
+        order_repository.create(order)
 
-#         assert query_customer.name == "Customer test 1"
-#         assert query_customer.number == 1
-#         assert query_customer.zip == "1111111"
-#         assert query_customer.street == "street 1"
+        # retrieving for assertion
+        query_order = self.session.query(OrderModel).filter_by(id="O1").first()
+        query_items_list = query_order.items
 
-#     def test_should_update_customer(self):
-#         customer_to_update = self.session.query(
-#             CustomerModel).filter_by(id="C1").first()
-
-#         address_vo = Address(
-#             street=customer_to_update.street,
-#             number=customer_to_update.number,
-#             zip=customer_to_update.zip,
-#             city=customer_to_update.city
-#         )
-
-#         customer_entity = Customer(
-#             id=customer_to_update.id,
-#             name=customer_to_update.name,
-#             active=customer_to_update.active,
-#             address=address_vo
-#         )
-
-#         customer_entity._rewardPoints = customer_to_update.reward_points
-
-#         # updates
-#         customer_entity.add_reward_points(10)
-#         customer_entity.change_name("Customer test 2")
-
-#         # update in DB
-#         customer_repository = CustomerRepository(self.session)
-#         customer_repository.update(customer_entity)
-
-#         # query for assertion
-#         customer_query = self.session.query(
-#             CustomerModel).filter_by(id="C1").first()
-
-#         assert customer_query.name == "Customer test 2"
-#         assert customer_query.reward_points == 10
-
-#     def test_should_find_a_customer(self):
-
-#         # create new customer
-#         address = Address(
-#             street="street 2",
-#             number=2,
-#             zip="222222",
-#             city="City 2"
-#         )
-#         customer = Customer(
-#             id="C2",
-#             name="Customer test 2",
-#             address=address,
-#             active=True
-#         )
-#         customer.add_reward_points(2)
-
-#         # add to DB
-#         customer_repository = CustomerRepository(self.session)
-#         customer_repository.create(customer)
-
-#         # search customer
-#         found_customer = customer_repository.find(id="C2")
-
-#         assert found_customer.get_name() == "Customer test 2"
-#         assert found_customer._address.street == "street 2"
-#         assert found_customer._address.city == "City 2"
-#         assert found_customer.get_reward_points() == 2
-
-#     def test_find_should_throw_an_error(self):
-#         customer_repository = CustomerRepository(self.session)
-#         with pytest.raises(ValueError) as error_info:
-#             _ = customer_repository.find(id="ASDASD")
-
-#         assert str(error_info.value) == "Customer Not Found"
-
-#     def test_should_find_all_customers(self):
-#         customer_repository = CustomerRepository(self.session)
-#         customers_list = customer_repository.find_all()
-#         ids_list = [customer.get_id() for customer in customers_list]
-
-#         assert not len(set(["C0", "C1", "C2"]) - set(ids_list))
+        assert query_order.customer_id == "C1"
+        assert query_order.total == 60
+        assert query_items_list[0].id == "OI1"
+        assert query_items_list[1].id == "OI2"
+        assert query_items_list[0].product_id == "P1"
+        assert query_items_list[0].order_id == "O1"
+        assert query_items_list[0].name == "Product 1"

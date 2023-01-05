@@ -9,12 +9,12 @@ class OrderItemModel(BaseModel):
 
     id = Column(String(50), primary_key=True)
     product_id = Column(String(50), ForeignKey(
-        'product.id', ondelete="CASCADE"), nullable=False)
+        'product.id'), nullable=False)
     order_id = Column(String(50), ForeignKey(
-        'order.id', ondelete="CASCADE"), nullable=False)
+        'order.id'), nullable=False)
     name = Column(String(250), nullable=False)
     quantity = Column(Integer, nullable=False)
     price = Column(Float, nullable=False)
 
     # relashionships
-    products = relationship("ProductModel")
+    products = relationship("ProductModel", post_update=True)

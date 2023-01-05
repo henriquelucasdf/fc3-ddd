@@ -21,4 +21,4 @@ class CustomerModel(BaseModel):
     # We need to model the DB based in the domain, not the inverse
 
     # relationships
-    orders = relationship("OrderModel", backref="customer")
+    orders = relationship("OrderModel", backref="customer", post_update=True)

@@ -13,4 +13,4 @@ class OrderModel(BaseModel):
     total = Column(Float, nullable=False)
 
     # Relationships
-    items = relationship("OrderItemModel", backref="order")
+    items = relationship("OrderItemModel", backref="order", post_update=True)
