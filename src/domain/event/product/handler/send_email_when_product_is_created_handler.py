@@ -8,4 +8,4 @@ logger = logging.getLogger("__main__")
 class SendEmailWhenProductIsCreatedHandler(EventHandlerInterface[ProductCreatedEvent]):
 
     def handle(self, event: ProductCreatedEvent) -> None:
-        logger.info(f"Sending email to {event.event_data.get('email')}")
+        logger.info("Sending email to ...")
