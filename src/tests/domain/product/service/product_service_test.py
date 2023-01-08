@@ -1,5 +1,5 @@
-from src.domain.entity.product import Product
-from src.domain.service.product_service import ProductService
+from src.domain.product.entity.product import Product
+from src.domain.product.service.product_service import ProductService
 
 
 def test_should_change_price_of_all_products():

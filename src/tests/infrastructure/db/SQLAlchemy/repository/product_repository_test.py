@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from src.domain.entity.product import Product
+from src.domain.product.entity.product import Product
 from src.infrastructure.db.SQLAlchemy.model.base_model import BaseModel
 from src.infrastructure.db.SQLAlchemy.model.product_model import ProductModel
 from src.infrastructure.db.SQLAlchemy.repository.product_repository import ProductRepository

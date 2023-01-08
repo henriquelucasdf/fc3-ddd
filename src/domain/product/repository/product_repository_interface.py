@@ -1,4 +1,4 @@
-from src.domain.entity.product import Product
+from src.domain.product.entity.product import Product
 from src.domain.repository.repository_interface import RepositoryInterface
 
 

@@ -6,7 +6,7 @@ from src.domain.entity.order_item import OrderItem
 
 from src.infrastructure.db.SQLAlchemy.model.order_model import OrderModel
 from src.infrastructure.db.SQLAlchemy.model.order_item_model import OrderItemModel
-from src.domain.repository.order_repository_interface import OrderRepositoryInterface
+from src.domain.order.repository.order_repository_interface import OrderRepositoryInterface
 
 
 class OrderRepository(OrderRepositoryInterface):

@@ -2,7 +2,7 @@ import pytest
 from src.domain.entity.order import Order
 from src.domain.entity.customer import Customer
 from src.domain.entity.order_item import OrderItem
-from src.domain.service.order_service import OrderService
+from src.domain.order.service.order_service import OrderService
 
 
 def test_should_get_total_of_all_orders():

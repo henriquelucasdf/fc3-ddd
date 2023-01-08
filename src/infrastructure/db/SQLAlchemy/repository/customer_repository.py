@@ -5,7 +5,7 @@ from src.domain.entity.address import Address
 from src.domain.entity.customer import Customer
 
 from src.infrastructure.db.SQLAlchemy.model.customer_model import CustomerModel
-from src.domain.repository.customer_repository_interface import CustomerRepositoryInterface
+from src.domain.customer.repository.customer_repository_interface import CustomerRepositoryInterface
 
 
 class CustomerRepository(CustomerRepositoryInterface):

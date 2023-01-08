@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from src.domain.entity.order import Order
 from src.domain.entity.address import Address
-from src.domain.entity.product import Product
+from src.domain.product.entity.product import Product
 from src.domain.entity.customer import Customer
 from src.domain.entity.order_item import OrderItem
 from src.infrastructure.db.SQLAlchemy.model.base_model import BaseModel
