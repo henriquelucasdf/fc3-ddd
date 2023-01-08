@@ -1,5 +1,5 @@
 import pytest
-from src.domain.entity.address import Address
+from src.domain.customer.entity.address import Address
 
 
 @pytest.mark.parametrize(

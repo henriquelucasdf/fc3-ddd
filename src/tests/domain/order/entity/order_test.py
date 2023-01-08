@@ -1,6 +1,6 @@
 import pytest
-from src.domain.entity.order import Order
-from src.domain.entity.order_item import OrderItem
+from src.domain.order.entity.order import Order
+from src.domain.order.entity.order_item import OrderItem
 
 
 def test_should_throw_error_when_id_is_empty():

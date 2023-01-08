@@ -1,10 +1,10 @@
 from typing import List
 from sqlalchemy.orm import Session
 
-from src.domain.entity.address import Address
-from src.domain.entity.customer import Customer
+from src.domain.customer.entity.address import Address
+from src.domain.customer.entity.customer import Customer
 
-from src.infrastructure.db.SQLAlchemy.model.customer_model import CustomerModel
+from src.infrastructure.customer.repository.SQLAlchemy.customer_model import CustomerModel
 from src.domain.customer.repository.customer_repository_interface import CustomerRepositoryInterface
 
 

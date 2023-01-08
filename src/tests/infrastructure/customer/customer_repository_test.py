@@ -1,11 +1,11 @@
 import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from src.domain.entity.address import Address
-from src.domain.entity.customer import Customer
-from src.infrastructure.db.SQLAlchemy.model.base_model import BaseModel
-from src.infrastructure.db.SQLAlchemy.model.customer_model import CustomerModel
-from src.infrastructure.db.SQLAlchemy.repository.customer_repository import CustomerRepository
+from src.domain.customer.entity.address import Address
+from src.domain.customer.entity.customer import Customer
+from src.infrastructure.shared.repository.SQLAlchemy.base_model import BaseModel
+from src.infrastructure.customer.repository.SQLAlchemy.customer_model import CustomerModel
+from src.infrastructure.customer.repository.SQLAlchemy.customer_repository import CustomerRepository
 
 
 engine = create_engine('sqlite://')

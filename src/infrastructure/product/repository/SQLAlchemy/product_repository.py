@@ -1,8 +1,8 @@
 from typing import List
+from sqlalchemy.orm import Session
 from src.domain.product.entity.product import Product
 from src.domain.product.repository.product_repository_interface import ProductRepositoryInterface
-from src.infrastructure.db.SQLAlchemy.model.product_model import ProductModel
-from sqlalchemy.orm import Session
+from src.infrastructure.product.repository.SQLAlchemy.product_model import ProductModel
 
 
 class ProductRepository(ProductRepositoryInterface):

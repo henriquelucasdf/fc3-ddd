@@ -1,7 +1,7 @@
 import pytest
-from src.domain.entity.order import Order
-from src.domain.entity.customer import Customer
-from src.domain.entity.order_item import OrderItem
+from src.domain.order.entity.order import Order
+from src.domain.customer.entity.customer import Customer
+from src.domain.order.entity.order_item import OrderItem
 from src.domain.order.service.order_service import OrderService
 
 

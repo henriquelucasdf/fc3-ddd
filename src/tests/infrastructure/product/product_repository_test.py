@@ -1,9 +1,9 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from src.domain.product.entity.product import Product
-from src.infrastructure.db.SQLAlchemy.model.base_model import BaseModel
-from src.infrastructure.db.SQLAlchemy.model.product_model import ProductModel
-from src.infrastructure.db.SQLAlchemy.repository.product_repository import ProductRepository
+from src.infrastructure.shared.repository.SQLAlchemy.base_model import BaseModel
+from src.infrastructure.product.repository.SQLAlchemy.product_model import ProductModel
+from src.infrastructure.product.repository.SQLAlchemy.product_repository import ProductRepository
 
 engine = create_engine('sqlite://')
 Session = sessionmaker(bind=engine)

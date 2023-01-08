@@ -1,5 +1,5 @@
 import pytest
-from src.domain.entity.order_item import OrderItem
+from src.domain.order.entity.order_item import OrderItem
 
 
 def test_should_throw_error_if_qtd_is_zero_or_less():

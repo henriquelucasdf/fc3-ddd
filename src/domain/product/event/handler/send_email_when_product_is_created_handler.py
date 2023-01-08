@@ -1,6 +1,6 @@
 import logging
-from src.domain.event.product.product_created_event import ProductCreatedEvent
-from src.domain.event.shared.event_handler_interface import EventHandlerInterface
+from src.domain.product.event.product_created_event import ProductCreatedEvent
+from src.domain.shared.event.event_handler_interface import EventHandlerInterface
 
 logger = logging.getLogger("__main__")
 

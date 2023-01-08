@@ -1,7 +1,7 @@
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, String, ForeignKey, Float, Integer
-from src.infrastructure.db.SQLAlchemy.model.base_model import BaseModel
-from src.infrastructure.db.SQLAlchemy.model.product_model import ProductModel
+from src.infrastructure.shared.repository.SQLAlchemy.base_model import BaseModel
+from src.infrastructure.product.repository.SQLAlchemy.product_model import ProductModel
 
 
 class OrderItemModel(BaseModel):

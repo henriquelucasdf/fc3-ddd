@@ -1,11 +1,11 @@
 from datetime import datetime
-from unittest.mock import patch, MagicMock
-from src.domain.event.shared.event_dispatcher import EventDispatcher
-from src.domain.event.product.product_created_event import ProductCreatedEvent
-from src.domain.event.product.handler.send_email_when_product_is_created_handler import (
+from unittest.mock import patch
+from src.domain.shared.event.event_dispatcher import EventDispatcher
+from src.domain.product.event.product_created_event import ProductCreatedEvent
+from src.domain.product.event.handler.send_email_when_product_is_created_handler import (
     SendEmailWhenProductIsCreatedHandler)
 
-HANDLER_PATH = "src.domain.event.product.handler"
+HANDLER_PATH = "src.domain.product.event.handler"
 
 
 def test_should_register_an_event_handler():

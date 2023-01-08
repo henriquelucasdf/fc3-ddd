@@ -1,5 +1,5 @@
 from typing import List
-from src.domain.entity.order_item import OrderItem
+from src.domain.order.entity.order_item import OrderItem
 
 
 class Order:

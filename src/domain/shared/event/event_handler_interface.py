@@ -1,6 +1,6 @@
 from typing import TypeVar, Generic
 from abc import ABC, abstractmethod
-from src.domain.event.shared.event_interface import EventInterface
+from src.domain.shared.event.event_interface import EventInterface
 
 TEventInterface = TypeVar("TEventInterface", bound="EventInterface")
 

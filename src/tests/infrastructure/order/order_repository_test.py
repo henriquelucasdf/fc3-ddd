@@ -1,16 +1,16 @@
 import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from src.domain.entity.order import Order
-from src.domain.entity.address import Address
+from src.domain.order.entity.order import Order
+from src.domain.order.entity.order_item import OrderItem
+from src.domain.customer.entity.address import Address
+from src.domain.customer.entity.customer import Customer
 from src.domain.product.entity.product import Product
-from src.domain.entity.customer import Customer
-from src.domain.entity.order_item import OrderItem
-from src.infrastructure.db.SQLAlchemy.model.base_model import BaseModel
-from src.infrastructure.db.SQLAlchemy.model.order_model import OrderModel
-from src.infrastructure.db.SQLAlchemy.repository.order_repository import OrderRepository
-from src.infrastructure.db.SQLAlchemy.repository.product_repository import ProductRepository
-from src.infrastructure.db.SQLAlchemy.repository.customer_repository import CustomerRepository
+from src.infrastructure.shared.repository.SQLAlchemy.base_model import BaseModel
+from src.infrastructure.order.repository.SQLAlchemy.order_model import OrderModel
+from src.infrastructure.order.repository.SQLAlchemy.order_repository import OrderRepository
+from src.infrastructure.product.repository.SQLAlchemy.product_repository import ProductRepository
+from src.infrastructure.customer.repository.SQLAlchemy.customer_repository import CustomerRepository
 
 
 engine = create_engine('sqlite://')
