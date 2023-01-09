@@ -1,4 +1,7 @@
-class Product:
+from src.domain.product.entity.product_interface import ProductInterface
+
+
+class Product(ProductInterface):
     def __init__(
         self,
         id: str,
@@ -21,6 +24,9 @@ class Product:
 
         if self._price < 0:
             raise ValueError("Price must be greater than zero")
+
+    def get_id(self) -> str:
+        return self._id
 
     def get_name(self) -> str:
         return self._name
