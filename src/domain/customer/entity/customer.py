@@ -47,6 +47,9 @@ class Customer:
     def get_id(self) -> str:
         return self._id
 
+    def get_address(self) -> Optional[Address]:
+        return self._address
+
     def is_active(self) -> Optional[bool]:
         return self._active
 
